@@ -1,4 +1,4 @@
-import cartesian, { choice } from '../index'
+import cartesian, { choice, describedValue } from '../index'
 
 const createStories = (s: any[]) => ({
   add: (title: string, story: any) => s.push({ title, ...story() })
@@ -55,6 +55,14 @@ describe('cartesian', () => {
         createCartesian({
           oneProp: choice(true, false),
           twoProp: choice('', 'foobar', 'foobaz', 'test')
+        })
+      ).toMatchSnapshot()
+    })
+    it('described value', () => {
+      expect(
+        createCartesian({
+          oneProp: choice(1, 2),
+          twoProp: choice(describedValue('EMPTY TEXT', ''), 'test')
         })
       ).toMatchSnapshot()
     })

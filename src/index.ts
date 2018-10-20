@@ -12,9 +12,9 @@ import {
   keys,
   map,
   mapValues,
-  negate,
   reduce,
   values,
+  reject,
   zip
 } from 'lodash/fp'
 
@@ -23,7 +23,7 @@ import flatten, { unflatten } from 'flat'
 type CartesianData<T> = { [P in keyof T]: Array<T[P]> | any }
 
 const xproduct = (vals: any[][]) =>
-  reduce((a: any[][], b: any[]) => flatMap(x => map(y => concat(x, y))(b))(a))([
+  reduce((a: any[][], b: any[]) => flatMap(x => map(y => concat(x, [y]))(b))(a))([
     []
   ])(vals)
 
@@ -46,7 +46,12 @@ const isChoice = (v: any) =>
 const choice = (...choices: any) => ['$choice$', choices]
 const nodeValue = (node: any) => get('1', node)
 
-/* 
+const describedValue = (description: string, value: any) => ['$describedValue$', description, value]
+const isDescribedValue = (v: any) => isArray(v) && first(v) === '$describedValue$'
+const describedValueDescription = (v: Array<any>) => v[1]
+const describedValueValue = (v: Array<any>) => v[2]
+
+/*
 Seed data structure:
 
 Use AST-like nodes to indicate choice fields, with which to
@@ -61,14 +66,14 @@ input:
 const cartesian = (stories: any) => ({
   add: <Props>(
     seed: () => CartesianData<Props>,
-    renderTitle: (props: Props) => string,
-    renderStory: (props: Props) => any,
+    renderTitle: (props: object) => string,
+    renderStory: (props: object) => any,
     valid: (props: Props) => boolean = () => true,
     apply: (
       stories: any,
       candidate: Array<{ props: Props; story: any; title: string }>
     ) => void = (s, cands) =>
-      each(cand => s.add(cand.title, () => cand.story), cands)
+      each(cand => s.add(cand.title, () => cand.story), cands),
   ) => {
     const data = flatten(seed(), { safe: true })
     const compiledData = compile(data)
@@ -85,14 +90,18 @@ const cartesian = (stories: any) => ({
     const candidates = map(
       props => ({
         props,
-        story: renderStory(props),
-        title: renderTitle(props)
+        story: renderStory(mapValues((v: any) => isDescribedValue(v) ? describedValueValue(v) : v, props)),
+        title: renderTitle({
+          ...mapValues((v: any) => isDescribedValue(v) ? describedValueValue(v) : v, props),
+          __valueDescription: mapValues((v: any) => isDescribedValue(v) ? describedValueDescription(v) : null, props)
+        })
       }),
-      filter(valid, filter(negate(isEmpty), rows))
+      filter(valid, reject(isEmpty, rows))
     )
+
     apply(stories, candidates)
   }
 })
 
-export { choice }
+export { choice, describedValue }
 export default cartesian

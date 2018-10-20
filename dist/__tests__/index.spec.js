@@ -36,8 +36,8 @@ describe('cartesian', () => {
         });
         it('multi prop', () => {
             expect(createCartesian({
-                oneProp: index_1.choice(true, false),
-                twoProp: index_1.choice('', 'test')
+                oneProp: index_1.choice(1, 2),
+                twoProp: index_1.choice(index_1.describedValue('EMPTY TEXT', ''), 'test')
             })).toMatchSnapshot();
         });
         it('nested prop', () => {

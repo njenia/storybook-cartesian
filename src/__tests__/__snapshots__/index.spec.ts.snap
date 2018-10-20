@@ -1,5 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`cartesian choices described value 1`] = `
+Array [
+  Object {
+    "story": Object {
+      "props": Object {
+        "oneProp": 1,
+        "twoProp": "",
+      },
+    },
+    "title": "{\\"oneProp\\":1,\\"twoProp\\":\\"\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":\\"EMPTY TEXT\\"}}",
+  },
+  Object {
+    "story": Object {
+      "props": Object {
+        "oneProp": 1,
+        "twoProp": "test",
+      },
+    },
+    "title": "{\\"oneProp\\":1,\\"twoProp\\":\\"test\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
+  },
+  Object {
+    "story": Object {
+      "props": Object {
+        "oneProp": 2,
+        "twoProp": "",
+      },
+    },
+    "title": "{\\"oneProp\\":2,\\"twoProp\\":\\"\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":\\"EMPTY TEXT\\"}}",
+  },
+  Object {
+    "story": Object {
+      "props": Object {
+        "oneProp": 2,
+        "twoProp": "test",
+      },
+    },
+    "title": "{\\"oneProp\\":2,\\"twoProp\\":\\"test\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
+  },
+]
+`;
+
 exports[`cartesian choices empty prop 1`] = `Array []`;
 
 exports[`cartesian choices multi prop 1`] = `
@@ -11,7 +52,7 @@ Array [
         "twoProp": "",
       },
     },
-    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"\\"}",
+    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -20,7 +61,7 @@ Array [
         "twoProp": "test",
       },
     },
-    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"test\\"}",
+    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"test\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -29,7 +70,7 @@ Array [
         "twoProp": "",
       },
     },
-    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"\\"}",
+    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -38,7 +79,7 @@ Array [
         "twoProp": "test",
       },
     },
-    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"test\\"}",
+    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"test\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
 ]
 `;
@@ -55,7 +96,7 @@ Array [
         "twoProp": "",
       },
     },
-    "title": "{\\"twoProp\\":\\"\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":true}}",
+    "title": "{\\"twoProp\\":\\"\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":true},\\"__valueDescription\\":{\\"twoProp\\":null,\\"oneProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -67,7 +108,7 @@ Array [
         "twoProp": "test",
       },
     },
-    "title": "{\\"twoProp\\":\\"test\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":true}}",
+    "title": "{\\"twoProp\\":\\"test\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":true},\\"__valueDescription\\":{\\"twoProp\\":null,\\"oneProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -79,7 +120,7 @@ Array [
         "twoProp": "",
       },
     },
-    "title": "{\\"twoProp\\":\\"\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":false}}",
+    "title": "{\\"twoProp\\":\\"\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":false},\\"__valueDescription\\":{\\"twoProp\\":null,\\"oneProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -91,7 +132,7 @@ Array [
         "twoProp": "test",
       },
     },
-    "title": "{\\"twoProp\\":\\"test\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":false}}",
+    "title": "{\\"twoProp\\":\\"test\\",\\"oneProp\\":{\\"story\\":\\"yes\\",\\"accept\\":false},\\"__valueDescription\\":{\\"twoProp\\":null,\\"oneProp\\":null}}",
   },
 ]
 `;
@@ -104,7 +145,7 @@ Array [
         "oneProp": true,
       },
     },
-    "title": "{\\"oneProp\\":true}",
+    "title": "{\\"oneProp\\":true,\\"__valueDescription\\":{\\"oneProp\\":null}}",
   },
 ]
 `;
@@ -118,7 +159,7 @@ Array [
         "twoProp": "",
       },
     },
-    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"\\"}",
+    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -127,7 +168,7 @@ Array [
         "twoProp": "foobar",
       },
     },
-    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"foobar\\"}",
+    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"foobar\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -136,7 +177,7 @@ Array [
         "twoProp": "foobaz",
       },
     },
-    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"foobaz\\"}",
+    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"foobaz\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -145,7 +186,7 @@ Array [
         "twoProp": "test",
       },
     },
-    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"test\\"}",
+    "title": "{\\"oneProp\\":true,\\"twoProp\\":\\"test\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -154,7 +195,7 @@ Array [
         "twoProp": "",
       },
     },
-    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"\\"}",
+    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -163,7 +204,7 @@ Array [
         "twoProp": "foobar",
       },
     },
-    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"foobar\\"}",
+    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"foobar\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -172,7 +213,7 @@ Array [
         "twoProp": "foobaz",
       },
     },
-    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"foobaz\\"}",
+    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"foobaz\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -181,7 +222,7 @@ Array [
         "twoProp": "test",
       },
     },
-    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"test\\"}",
+    "title": "{\\"oneProp\\":false,\\"twoProp\\":\\"test\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
 ]
 `;
@@ -201,7 +242,7 @@ Array [
         "twoProp": "two",
       },
     },
-    "title": "{\\"oneProp\\":\\"one-1\\",\\"twoProp\\":\\"two\\"}",
+    "title": "{\\"oneProp\\":\\"one-1\\",\\"twoProp\\":\\"two\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
   Object {
     "story": Object {
@@ -210,7 +251,7 @@ Array [
         "twoProp": "two",
       },
     },
-    "title": "{\\"oneProp\\":\\"one-2\\",\\"twoProp\\":\\"two\\"}",
+    "title": "{\\"oneProp\\":\\"one-2\\",\\"twoProp\\":\\"two\\",\\"__valueDescription\\":{\\"oneProp\\":null,\\"twoProp\\":null}}",
   },
 ]
 `;
@@ -223,7 +264,7 @@ Array [
         "oneProp": true,
       },
     },
-    "title": "{\\"oneProp\\":true}",
+    "title": "{\\"oneProp\\":true,\\"__valueDescription\\":{\\"oneProp\\":null}}",
   },
 ]
 `;

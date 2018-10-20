@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fp_1 = require("lodash/fp");
 const flat_1 = __importStar(require("flat"));
-const xproduct = (vals) => fp_1.reduce((a, b) => fp_1.flatMap(x => fp_1.map(y => fp_1.concat(x, y))(b))(a))([
+const xproduct = (vals) => fp_1.reduce((a, b) => fp_1.flatMap(x => fp_1.map(y => fp_1.concat(x, [y]))(b))(a))([
     []
 ])(vals);
 /*
@@ -28,6 +28,11 @@ const isChoice = (v) => fp_1.isArray(v) && v.length === 2 && fp_1.first(v) === '
 const choice = (...choices) => ['$choice$', choices];
 exports.choice = choice;
 const nodeValue = (node) => fp_1.get('1', node);
+const describedValue = (description, value) => ['$describedValue$', description, value];
+exports.describedValue = describedValue;
+const isDescribedValue = (v) => fp_1.isArray(v) && fp_1.first(v) === '$describedValue$';
+const describedValueDescription = (v) => v[1];
+const describedValueValue = (v) => v[2];
 /*
 Seed data structure:
 
@@ -48,9 +53,9 @@ const cartesian = (stories) => ({
         const rows = fp_1.map(p => flat_1.unflatten(fp_1.fromPairs(fp_1.zip(fields, p))), xproduct(fp_1.map(v => (isChoice(v) ? nodeValue(v) : [v]), fp_1.values(compiledData))));
         const candidates = fp_1.map(props => ({
             props,
-            story: renderStory(props),
-            title: renderTitle(props)
-        }), fp_1.filter(valid, fp_1.filter(fp_1.negate(fp_1.isEmpty), rows)));
+            story: renderStory(fp_1.mapValues((v) => isDescribedValue(v) ? describedValueValue(v) : v, props)),
+            title: renderTitle(Object.assign({}, fp_1.mapValues((v) => isDescribedValue(v) ? describedValueValue(v) : v, props), { __valueDescription: fp_1.mapValues((v) => isDescribedValue(v) ? describedValueDescription(v) : null, props) }))
+        }), fp_1.filter(valid, fp_1.reject(fp_1.isEmpty, rows)));
         apply(stories, candidates);
     }
 });

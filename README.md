@@ -106,7 +106,6 @@ This will create a special data strucure which tells `cartesian` to create these
 }]
 ```
 
-
 Your `titleRender` function gets an instance of your props and returns a string:
 
 ```javascript
@@ -130,10 +129,41 @@ cartesian(storiesOf('Button/Cartesian'))
     )
 ```
 
+If you want to have some description of the values in the story title, you can use `describedValue` in the seed function and `__valueDescription.[PROP_NAME]` in the title.
+Like so:
+```
+import { describedValue } from 'storybook-cartesian'
+
+const seedfn = ()=>({
+    color: choice(describedValue("dark color", "#010101"),
+                  describedValue("bright color", "#FF22FF"))
+    text: choice(describedValue("one word", "rabbit"),
+                describedValue("empty text", ""),
+                describedValue("long sentence", "the rabbit is in it's hole"))
+})
+const titleRender = props => `${props.one} / ${props.__valueDescription.check}`
+
+cartesian(storiesOf('Using described value'))
+    .add(
+        seedfn,
+        titleRender,
+        componentRender
+    )
+```
+
+And the story titles will be:  
+"dark color / one word"  
+"dark color / empty text"  
+"dark color / long sentence"  
+"bright color / one word"  
+"bright color / empty text"  
+"bright color / long sentence"  
+Which looks quite nicer and meaningful than:  
+"#fff1f1 / the rabbit is in it's hole"  
 
 ## Advanced
 
-Some times, not all prop combinations make sense. For example if you have an `isLoading` and a `results` props it doesn't make
+Sometimes, not all prop combinations make sense. For example if you have an `isLoading` and a `results` props it doesn't make
 sense to have both `true` and `results` populated:
 
 ```javascript
